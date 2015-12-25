@@ -1,0 +1,246 @@
+﻿#Navbar {
+    height:180px;
+    background-image:url("Images/BigEqualizer1920x200.jpg");
+    background-color:black;
+}
+
+#FilterPanelHeader,#AudioControlPanelHeader,#PlaylistPanelHeader {
+    background-color:red;
+    color:white;
+}
+
+#PlaylistPanelBody, #FilterPanelBody, #AudioControlPanelBody, 
+#GenreDropDown, #ArtistDropDown,#ApplyArtistFilterButton,#ApplyGenreFilterButton,
+#ApplySearchFilterButton,#RemoveFilterButton,#PlaylistButton,#FilterPanel input,#AudioControlPanel input{
+    background-color:black;
+    color:white;
+}
+
+#NavbarBanner {
+    position:absolute;
+    background-image:url(Images/navbar-banner.jpg);
+    width:500px;
+    height:66px;
+    left:50%;
+    margin-left:-660px;
+}
+
+#TuneBrowserContainer{
+     position:absolute;
+     width:1300px;
+     height:900px;
+     left:50%;
+     margin-left:-650px;
+}
+
+#PanelsContainer {
+    background-color:black;
+    color:white;
+    top:100px;
+    position:absolute;
+    height:300px;
+}
+
+#TuneListHeaderDiv {
+    position:fixed;
+    top:570px;
+}
+
+#TuneListDiv {
+    position:absolute;
+    top:545px;
+    height:400px;
+    overflow:auto;
+}
+
+
+
+#PlaylistPanel{
+    background-color:black;
+    color:white;
+    position:absolute;
+    top:225px;
+    left:0px;
+    height:180px;
+    width:960px;
+}
+
+#PlaylistButton {
+    position:absolute;
+    top:100px;
+    left:860px;
+}
+
+
+#FilterPanel {
+    background-color:black;
+    color:white;
+    position:absolute;
+    top:35px;
+    left:970px;
+    height:370px;
+    width:315px;
+}
+
+#GenreCaption {position:absolute; left:10px; top: 50px; font-weight:normal;}
+#GenreDropDown{position:absolute; left:10px; top: 75px; width:210px;}
+#ApplyGenreFilterButton{position:absolute; left:235px; top: 75px;}
+
+#ArtistCaption {position:absolute; left:10px; top: 130px; font-weight:normal;}
+#ArtistDropDown{position:absolute; left:10px; top: 155px; width:210px;}
+#ApplyArtistFilterButton{position:absolute; left:235px; top: 155px;}
+
+#SearchCaption {position:absolute; left:10px; top: 210px; font-weight:normal;}
+#SearchText{position:absolute; left:10px; top: 235px;width:210px;}
+#ApplySearchFilterButton{position:absolute; left:235px; top: 235px;}
+#RemoveFilterButton{position:absolute; left:10px; top: 290px;}
+
+
+#AudioControlPanel {
+    background-color:black;
+    color:white;
+    position :absolute;
+    top:35px;
+    left: 0px;
+    height:180px;
+    width:960px;
+}
+
+
+#TuneDetailsPanel input{
+    cursor:default;
+}
+
+#TuneDetailsPanel {
+    width:300px;
+}
+
+.tune-label-div {
+    position:absolute;
+    left:14px;
+}
+
+.tune-info-div {
+    position:absolute;
+    left:70px;
+    width:600px;
+    
+}
+
+.tune-info-div1 {
+    top:52px;
+}
+.tune-info-div2 {
+    top:90px;
+}
+.tune-info-div3 {
+    top:128px;
+}
+
+.tune-info-text{
+    width:500px;
+}
+
+#Player{
+    position:absolute;
+    left:390px;
+    top:72px; 
+}
+
+#PlaylistHeaderDiv {
+    position:absolute;
+    top:50px;
+}
+
+#PlaylistDiv {
+    position:absolute;
+    top:75px;
+    height:75px;
+    overflow:auto;
+}
+
+#TuneListHeaderDiv th,#PlaylistHeaderDiv th {
+    border-top: none;
+}
+
+#TuneListHeaderDiv th,#TuneListDiv td, #PlaylistHeaderDiv th,#PlaylistDiv td
+{
+    padding:2px;
+    margin:0px;
+}
+
+/* Stops the auto compute shit */
+.tune-list-table{
+    margin-right:19px;
+    table-layout:fixed;
+    width:10px; 
+}
+
+.table-column1 {width:225px;}.table-column2{width:225px;}.table-column3{width:225px;}.table-column4{width:50px;}.table-column5{width:210px;}.table-column6{width:200px;}
+.table-column7{
+    width:131px;
+}
+
+.remove-row-link{width:75px;}
+
+.normal-cursor{cursor:default;}
+
+body {
+    color:white;
+    background-color:black;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+body a {
+    color:white;
+}
+
+body a:hover {
+    color:red;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#loading
+{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(80,80,80,0.9);
+    z-index:1000;
+}
+  
+#loadingcontent
+{
+    display:table;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+  
+#loadingspinner
+{
+    display: table-cell;
+    vertical-align:middle;
+    width: 100%;
+    text-align: center;
+    font-size:larger;
+    padding-top:80px;
+}

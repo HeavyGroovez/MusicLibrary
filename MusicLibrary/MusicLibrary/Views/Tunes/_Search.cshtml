@@ -1,0 +1,45 @@
+﻿@Html.Label("Search", new { @id = "SearchCaption"})
+@Html.TextBox("SearchText", "", new { @class = "filter-input tune-info-text form-control text-box single-line" })
+<p></p>
+<button id="ApplySearchFilterButton" type="button" class="btn btn-sm btn-default">Apply</button>
+<button id="RemoveFilterButton" type="button" class="btn btn-sm btn-default">Show All</button>
+<script>
+$(function () {
+
+    // Bind click event to Tune Search Controller action
+    $("#ApplySearchFilterButton").click(function () {
+        var criteria = $("#SearchText").val();
+        var url = '@Url.Action("Search", "Tunes")';
+        $.get(url, { criteria: criteria }, function (data) {
+            $('#TuneListDiv').html(data);
+        });
+    }) //end click
+
+    // Bind keypress event to Tune Search Controller action
+    $("#SearchText").on('keypress', function (event) {
+        if(event.which == '13')
+        {
+            var criteria = $("#SearchText").val();
+            var url = '@Url.Action("Search", "Tunes")';
+            $.get(url, { criteria: criteria }, function (data) {
+                $('#TuneListDiv').html(data);
+            }); // end get
+         } // end if
+    }) //end on
+
+    // Bind click event to Tune NoFilter Controller action
+    $("#RemoveFilterButton").click(function () {
+        $("#loading").fadeIn();
+        $('#loading').spin('default')
+        var url = '@Url.Action("NoFilter", "Tunes")';
+        $.get(url, "", function (data) {
+            $('#TuneListDiv').html(data);
+            $("#loading").fadeOut();
+            $('#loading').spin(false);
+        });
+        
+    }) //end click
+
+})
+</script>
+

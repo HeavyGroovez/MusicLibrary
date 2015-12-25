@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="~/Content/Images/record.ico">
+    <title>Music Library</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/kendo")
+    @Scripts.Render("~/bundles/musicLibrary")
+    <script src="~/Glimpse/Resource/?resource=Pager"></script>
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+    <div id="Navbar" class="navbar navbar-inverse navbar-fixed-top">
+
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

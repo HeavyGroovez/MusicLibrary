@@ -1,0 +1,18 @@
+﻿@Html.Label("Artist", new { @id = "ArtistCaption" })
+@Html.DropDownList("ArtistDropDown")
+<button id="ApplyArtistFilterButton" type="button" class="btn btn-sm btn-default">Apply</button>
+<script>
+    $(function () {
+        // Style dropdown (fucking overload that supports attributes when we create it wants another parameter we dont have...meh)
+        $('#ArtistDropDown').addClass("form-control");
+        // Bind click event to Tune Filter Controller action
+        $("#ApplyArtistFilterButton").click(function () {
+            var artistName = $("#ArtistDropDown").val();
+            var genreName = $("#GenreDropDown").val();
+            var url = '@Url.Action("Filter", "Tunes")';
+            $.get(url, { artist: artistName, genre: null }, function (data) {
+                $('#TuneListDiv').html(data);
+            });
+        }) //end click
+    }) // end ready
+</script>

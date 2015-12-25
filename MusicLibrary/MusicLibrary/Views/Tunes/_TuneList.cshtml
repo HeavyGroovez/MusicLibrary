@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MusicLibrary.Models.Tune>
+
+<table id="TuneListTable" class="table tune-list-table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="table-column1">
+                @Html.DisplayFor(m => item.Artist)
+            </td>
+            <td class="table-column2">
+                @Html.DisplayFor(m => item.Album)
+            </td>
+            <td class="table-column3">
+                @Html.DisplayFor(m => item.Title)
+            </td>
+            <td class="table-column4">
+                @Html.DisplayFor(m => item.Year)
+            </td>
+            <td class="table-column5">
+                @Html.DisplayFor(m => item.Comment)
+            </td>
+            <td class="table-column6">
+                @Html.DisplayFor(m => item.Genre)
+            </td>
+            <td class="table-column7">
+                @Ajax.ActionLink("Play", "Load", new { tuneID = item.TuneID }, new AjaxOptions
+                        {
+                            UpdateTargetId = "AudioControlPanel", // <-- DOM element ID to update
+                            InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                            HttpMethod = "GET" // <-- HTTP method
+                        }) |
+                @Ajax.ActionLink("Playlist", "AddTuneToPlaylist", new { tuneID = item.TuneID }, new AjaxOptions
+                        {
+                            UpdateTargetId = "PlaylistDiv", // <-- DOM element ID to update
+                            InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                            HttpMethod = "GET" // <-- HTTP method
+                        }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.TuneID })
+            </td>
+        </tr>
+    }
+
+</table>
+<script>
+    $(function () {
+        if (internetExplorer() != false) {
+            // Remove margin from IE browsers.
+            // This is a "dont show horizontal scrollbar on HTML table" swerve for non IE browsers
+            $('#TuneListTable').css("margin-right", "0px")
+        }
+    }) //end ready
+</script>

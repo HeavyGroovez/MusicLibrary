@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MusicLibrary.Models.Tune>
+@section scripts
+{
+    <script src="~/Scripts/playlist.js"></script>
+    <script src="~/Scripts/spin.js"></script>
+    <script src="~/Scripts/jquery.spin.js"></script>
+}
+<div id="TuneBrowserContainer">
+    <div id="PanelsContainer">  
+        <div id="AudioControlPanel" class="panel panel-default">
+            <div id="AudioControlPanelHeader" class="panel-heading">
+                <h3 class="panel-title">Audio Controls</h3>
+            </div>
+            <div id="AudioControlPanelBody" class="panel-body">
+                <div id="TuneDetailsPanel">
+                    <h4>No Tune Loaded...</h4>
+                </div>
+            </div>
+        </div>
+        <div id="FilterPanel" class="panel panel-default">
+            <div id="FilterPanelHeader" class="panel-heading">
+                <h3 class="panel-title">Filter</h3>
+            </div>
+            <div id="FilterPanelBody" class="panel-body">
+                <div id="GenreFilterPanel">
+                    @Html.Partial("_Genres")
+                </div>
+                <div id="ArtistFilterPanel">
+                    @Html.Partial("_Artists")
+                </div>
+                <div id="SearchFilterPanel">
+                    @Html.Partial("_Search")
+                </div>
+            </div>
+        </div>
+        <div id="PlaylistPanel" class="panel panel-default">
+            <div id="PlaylistPanelHeader" class="panel-heading">
+                <h3 class="panel-title">Playlist</h3>
+            </div>
+            <div id="PlaylistPanelBody" class="panel-body">
+                <div id="PlaylistHeaderDiv">
+                    <table id="PlaylistHeaderTable" class="tune-list-table">
+                        <tr>
+                            <th class="table-column1">
+                                @Html.DisplayNameFor(m => m.Artist)
+                            </th>
+                            <th class="table-column2">
+                                @Html.DisplayNameFor(m => m.Album)
+                            </th>
+                            <th class="table-column2">
+                                @Html.DisplayNameFor(m => m.Title)
+                            </th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="PlaylistDiv">
+                    @Html.Partial("_Playlist")
+                </div>
+                <button id="PlaylistButton" onclick="initPlaylist('@Url.Action("LoadPlaylistTune", "Tunes")')" type="button" class="btn btn-sm btn-default">Play</button>
+            </div>
+        </div>
+    </div>
+    <div id="TuneListHeaderDiv">
+        <table id="TuneListHeaderTable" class="tune-list-table">
+            <tr>
+                <th class="table-column1">
+                    @Html.DisplayNameFor(m => m.Artist)
+                </th>
+                <th class="table-column2">
+                    @Html.DisplayNameFor(m => m.Album)
+                </th>
+                <th class="table-column3">
+                    @Html.DisplayNameFor(m => m.Title)
+                </th>
+                <th class="table-column4">
+                    @Html.DisplayNameFor(m => m.Year)
+                </th>
+                <th class="table-column5">
+                    @Html.DisplayNameFor(m => m.Comment)
+                </th>
+                <th class="table-column6">
+                    @Html.DisplayNameFor(m => m.Genre)
+                </th>
+                <th class="table-column7">
+
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div id="TuneListDiv">
+        @Html.Partial("_TuneList")
+    </div>
+    <div id="loading">
+        <div id="loadingcontent">
+            <p id="loadingspinner">
+                Loading...
+            </p>
+        </div>
+    </div>
+</div>

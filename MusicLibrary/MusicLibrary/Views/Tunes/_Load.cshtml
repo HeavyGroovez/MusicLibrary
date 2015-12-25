@@ -1,0 +1,50 @@
+﻿@model MusicLibrary.Models.Tune
+
+<div id="AudioControlPanelHeader" class="panel-heading">
+    <h3 class="panel-title">Audio Controls</h3>
+</div>
+<div id="AudioControlPanelBody" class="panel-body">
+    <div id="TuneDetailsPanel">
+        <div class="tune-label-div tune-info-div1">
+            @Html.DisplayNameFor(m => m.Title)
+        </div>
+        <div class="tune-info-div tune-info-div1">
+            @Html.TextBox("Title", Model.Title, new { @disabled = "disabled", @class = "tune-info-text form-control text-box single-line" })
+        </div>
+        <div class="tune-label-div tune-info-div2">
+            @Html.DisplayNameFor(m => m.Album)
+        </div>
+        <div class="tune-info-div tune-info-div2">
+            @Html.TextBox("Album", Model.Album, new { @disabled = "disabled", @class = "tune-info-text form-control text-box single-line" })
+        </div>
+        <div class="tune-label-div tune-info-div3">
+            @Html.DisplayNameFor(m => m.Artist)
+        </div>
+        <div class="tune-info-div tune-info-div3">
+            @Html.TextBox("Artist", Model.Artist, new { @disabled = "disabled", @class = "tune-info-text form-control text-box single-line" })
+        </div>
+    </div>
+    <script>
+        $(function () {
+            // IE Audio/Mozilla audio control are different sizes so it needs repositioning if Mozilla
+            if (internetExplorer() == false) {
+                $('#Player').css("left", "500px")
+                $('#Player').css("top", "90px")
+            }
+        })
+    </script>
+    <div id="Player">
+        <audio controls autoplay onended="loadNextTune('@Url.Action("LoadPlaylistTune", "Tunes")');">
+            <source src='@Url.Content(Model.VirtualPath)' type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
+
+
+
+
+
+
+
+

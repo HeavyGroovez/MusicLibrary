@@ -1,0 +1,30 @@
+﻿@Html.Label("Genre", new { @id = "GenreCaption" })
+@Html.DropDownList("GenreDropDown")
+<button id="ApplyGenreFilterButton" type="button" class="btn btn-sm btn-default">Apply</button>
+<script>
+$(function () {
+
+        // Style dropdown (fucking overload that supports attributes wants another parameter we dont have...meh)
+        $('#GenreDropDown').addClass("form-control")
+
+        // Bind change event to Tune FilterArtists Controller action
+        $("#GenreDropDown").change(function () {
+                var genreName = $("#GenreDropDown").val();
+                var url = '@Url.Action("FilterArtists", "Tunes")';
+                $.get(url, { genre: genreName }, function (data) {
+                    $('#ArtistFilterPanel').html(data);
+                })
+            }); //end change
+
+        // Bind click event to Tune Filter Controller action
+        $("#ApplyGenreFilterButton").click(function () {
+            var genreName = $("#GenreDropDown").val();
+            var url = '@Url.Action("Filter", "Tunes")';
+            $.get(url, { artist: '', genre: genreName }, function (data) {
+                $('#TuneListDiv').html(data);
+            });
+        }) //end click
+
+})
+</script>
+

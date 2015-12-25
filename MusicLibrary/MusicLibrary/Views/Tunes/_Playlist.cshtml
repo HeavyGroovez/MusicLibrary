@@ -1,0 +1,34 @@
+﻿<table id="PlaylistTable" class="table tune-list-table">
+    @foreach (var item in ViewBag.PlaylistViewModel)
+    {
+        <tr>
+            <td class="table-column1">
+                @item.Artist
+            </td>
+            <td class="table-column2">
+                @item.Album
+            </td>
+            <td class="table-column3">
+                @item.Title
+            </td>
+            <td class="remove-row-link">
+                @Ajax.ActionLink("Remove", "RemoveTuneFromPlaylist", new { playlistID = item.PlaylistID }, new AjaxOptions
+                        {
+                            UpdateTargetId = "PlaylistDiv", // <-- DOM element ID to update
+                            InsertionMode = InsertionMode.Replace, // <-- Replace the content of DOM element
+                            HttpMethod = "GET" // <-- HTTP method
+                        }) 
+            </td>
+        </tr>
+    }
+</table>
+<script>
+    $(function () {
+        if (internetExplorer() != false) {
+            // Add a negative margin to non IE browsers.
+            // This is a "dont show horizontal scrollbar on HTML table" swerve for non IE browsers
+            $('#PlaylistTable').css("margin-right", "0px")
+        }
+    }) //end ready
+</script>
+
